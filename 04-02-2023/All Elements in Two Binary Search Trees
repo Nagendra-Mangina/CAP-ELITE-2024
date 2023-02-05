@@ -1,0 +1,20 @@
+class Solution {
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+        List<Integer> list=new ArrayList<>();
+        helper(root1,list);
+        helper(root2,list);
+        Collections.sort(list);
+        return list;
+    }
+    public TreeNode helper(TreeNode root,List<Integer> list)
+    {
+        if(root==null)
+        {
+            return null;
+        }
+        list.add(root.val);
+        root.left=helper(root.left,list);
+        root.right=helper(root.right,list);    
+        return root;
+    }
+}
